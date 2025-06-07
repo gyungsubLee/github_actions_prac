@@ -2,12 +2,13 @@ name: github actions 테스트
 
 on:
 	push:
-		branchs:
+		branches:
 			- main
 
 jobs:
 	My_Deploy-job:
-		runs-on: ububtu-latest
+		runs-on: ubuntu-latest
+
 		steps:
 			- name: Hello World 찍기
 			  run: echo "Hello World"
@@ -19,12 +20,10 @@ jobs:
 
 			- name: Github Actions 자체에 저장된 변수 사용
 			  run: |
-				echo $GITHUB_SHA
-				echo $GITHUB_REPOSITORY
+				  echo $GITHUB_SHA
+				  echo $GITHUB_REPOSITORY
 
-			- name:
-			  run:
-				echo ${{ secrets.MY_NAME }}
-				echo ${{ secrets.MY_HOBBY }}
-
-
+			- name: GitHub Secrets 사용 예제
+			  run: |
+				  echo "${{ secrets.MY_NAME }}"
+				  echo "${{ secrets.MY_HOBBY }}"
